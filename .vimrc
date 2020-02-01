@@ -23,6 +23,7 @@ set showcmd        " show command in bottom bar
 filetype indent on " filetype detection and loading of lang specific files
 
 set wildmenu       " visual autocomplete for command menu
+set wildignore=*.o,*~,*.pyc,*/.git/*,*/.DS_Store
 set lazyredraw     " don't redraw during macros
 set showmatch      " show matching [{()}]
 set so=7           " set lines buffer from the top/botom of the screen

@@ -18,6 +18,7 @@ set expandtab      " insert spaces instead of <TAB>s
 " UI Config ---------------------------------------------
 set number         " display line numbers
 set showcmd        " show command in bottom bar
+set ruler          " show row/col numbers in the status bar
 
 " set cursorline     " underline current line
 filetype indent on " filetype detection and loading of lang specific files

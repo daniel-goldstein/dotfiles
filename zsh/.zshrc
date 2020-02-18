@@ -2,6 +2,9 @@
 
 # Aliases ----------------------------------------------------------
 
+# install dotfiles
+alias dotinstall="bash ~/Documents/projects/dotfiles/install.sh"
+
 alias ll="ls -al"
 alias v="vim"
 alias szh="source ~/.zshrc"

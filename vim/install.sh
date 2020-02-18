@@ -20,5 +20,8 @@ git clone https://github.com/tpope/vim-surround ~/.vim/bundle/vim-surround
 # Solarized theme
 git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
 
+# fuGITive
+git clone https://github.com/tpope/vim-fugitive ~/.vim/bundle/vim-fugitive
+
 # .vimrc
 cp .vimrc ~/.vimrc

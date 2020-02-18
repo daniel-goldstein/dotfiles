@@ -1,2 +1,5 @@
-cp .vimrc ~/.vimrc
+cd vim
+bash install.sh
+cd ..
+
 cp .zshrc ~/.zshrc

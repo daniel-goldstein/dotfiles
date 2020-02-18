@@ -18,6 +18,7 @@ alias cssh="ssh -X danielgoldstein@login.ccs.neu.edu"
 
 # Directories
 alias projects="cd ~/Documents/Projects"
+alias dots="cd ~/Documents/Projects/dotfiles"
 alias ts="cd ~/Documents/college/junior-year/oxford/ts"
-alias ms="cd ~/Documents/college/junior-year/oxford/ts/code/msprime"
+alias ms="cd ~/Documents/college/junior-year/oxford/ts/code/msprime && source mspenv/bin/activate"
 alias tscode="cd ~/Documents/college/junior-year/oxford/ts/code"

@@ -8,20 +8,30 @@ echo "Installing..."
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
+# Bundles ---------------------------------------------------------------------
+cd ~/.vim/bundle
+
+# Languages
 # racket
-git clone https://github.com/wlangstroth/vim-racket.git ~/.vim/bundle/vim-racket
-
+git clone https://github.com/wlangstroth/vim-racket.git
 # rust
-git clone --depth=1 https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
+git clone --depth=1 https://github.com/rust-lang/rust.vim.git
 
-# Surround
-git clone https://github.com/tpope/vim-surround ~/.vim/bundle/vim-surround
-
+# Plugins
 # Solarized theme
-git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
-
+git clone git://github.com/altercation/vim-colors-solarized.git
 # fuGITive
-git clone https://github.com/tpope/vim-fugitive ~/.vim/bundle/vim-fugitive
+git clone https://github.com/tpope/vim-fugitive
+# supertab
+git clone https://github.com/ervandew/supertab
+# commentary
+git clone https://github.com/tpope/vim-commentary
+# syntastic
+git clone https://github.com/scrooloose/syntastic
+# nerdtree
+git clone https://github.com/preservim/nerdtree.git
+cd -
 
-# .vimrc
+# Vimrc ----------------------------------------------------------------------
 cp .vimrc ~/.vimrc
+source ~/.vimrc

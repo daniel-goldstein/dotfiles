@@ -1,5 +1,3 @@
-
-
 # Aliases ----------------------------------------------------------
 
 # install dotfiles
@@ -18,6 +16,7 @@ alias gundo="git reset --soft HEAD~1"
 
 # ssh
 alias cssh="ssh -X danielgoldstein@login.ccs.neu.edu"
+alias bdissh="ssh fep634@rescomp1.well.ox.ac.uk"
 
 # Directories
 alias projects="cd ~/Documents/Projects"

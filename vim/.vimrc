@@ -12,7 +12,7 @@ set backspace=indent,eol,start
 " Colors ------------------------------------------------
 syntax enable         " How does one not use syntax highlighting??
 colorscheme solarized " Maybe find a more interesting one
-set background=light
+set background=dark
 
 
 " Spaces and Tabs ---------------------------------------
@@ -28,7 +28,7 @@ set showcmd        " show command in bottom bar
 set ruler          " show row/col numbers in the status bar
 
 " set cursorline     " underline current line
-filetype indent on " filetype detection and loading of lang specific files
+filetype plugin indent on " filetype detection and loading of lang specific files
 
 set wildmenu       " visual autocomplete for command menu
 set wildignore=*.o,*~,*.pyc,*/.git/*,*/.DS_Store
@@ -44,6 +44,7 @@ nnoremap <leader><space> :nohlsearch<CR> " unhighlight
 
 
 " Folding -----------------------------------------------
+set foldmethod=syntax " base it off the language
 set foldenable        " enable folding
 set foldlevelstart=10 " open most folds by default
 set foldnestmax=10    " 10 nested fold max
@@ -57,3 +58,6 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 map <leader>t<leader> :tabnext 
 
+" Autoclosing  ------------------------------------------
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O}}}])'"

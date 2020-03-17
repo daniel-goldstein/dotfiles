@@ -21,6 +21,5 @@ alias bdissh="ssh fep634@rescomp1.well.ox.ac.uk"
 # Directories
 alias projects="cd ~/Documents/Projects"
 alias dots="cd ~/Documents/Projects/dotfiles"
-alias ts="cd ~/Documents/college/junior-year/oxford/ts"
-alias ms="cd ~/Documents/college/junior-year/oxford/ts/code/msprime && source mspenv/bin/activate"
-alias tscode="cd ~/Documents/college/junior-year/oxford/ts/code"
+alias ts="cd ~/Documents/college/junior-year/oxford/work/code/tskit && source tskenv/bin/activate"
+alias ms="cd ~/Documents/college/junior-year/oxford/work/code/msprime && source mspenv/bin/activate"

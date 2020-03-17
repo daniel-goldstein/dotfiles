@@ -26,12 +26,11 @@ git clone https://github.com/tpope/vim-fugitive
 git clone https://github.com/ervandew/supertab
 # commentary
 git clone https://github.com/tpope/vim-commentary
-# syntastic
-git clone https://github.com/scrooloose/syntastic
+# ale (linting)
+git clone https://github.com/dense-analysis/ale.git
 # nerdtree
 git clone https://github.com/preservim/nerdtree.git
 cd -
 
 # Vimrc ----------------------------------------------------------------------
-cp .vimrc ~/.vimrc
-source ~/.vimrc
+ln -sf vimrc ~/.vimrc

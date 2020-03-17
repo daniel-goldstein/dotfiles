@@ -12,7 +12,10 @@ set backspace=indent,eol,start
 " Colors ------------------------------------------------
 syntax enable         " How does one not use syntax highlighting??
 colorscheme solarized " Maybe find a more interesting one
-set background=dark
+set background=light
+
+" Sounds ------------------------------------------------
+set belloff=all
 
 
 " Spaces and Tabs ---------------------------------------

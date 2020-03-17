@@ -1,2 +1,2 @@
-ln -sf tmux.conf ~/.tmux.conf
+ln -sf $(pwd)/tmux.conf ~/.tmux.conf
 tmux source-file ~/.tmux.conf

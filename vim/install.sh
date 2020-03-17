@@ -33,4 +33,4 @@ git clone https://github.com/preservim/nerdtree.git
 cd -
 
 # Vimrc ----------------------------------------------------------------------
-ln -sf vimrc ~/.vimrc
+ln -sf $(pwd)/vimrc ~/.vimrc

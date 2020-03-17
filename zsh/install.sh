@@ -1,4 +1,4 @@
-ln -sf .zshrc ~/.zshrc
+ln -sf $(pwd)/zshrc ~/.zshrc
 source ~/.zshrc
 
-ln -sf zprofile ~/.zprofile
+ln -sf $(pwd)/zprofile ~/.zprofile

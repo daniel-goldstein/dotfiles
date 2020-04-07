@@ -64,3 +64,8 @@ map <leader>t<leader> :tabnext
 " Autoclosing  ------------------------------------------
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O}}}])'"
+
+" ALE Linters  ------------------------------------------
+let g:ale_linters = {
+\   'rust': ['rustc'],
+\}

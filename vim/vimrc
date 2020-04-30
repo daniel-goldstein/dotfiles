@@ -12,10 +12,10 @@ set backspace=indent,eol,start
 " Colors ------------------------------------------------
 syntax enable         " How does one not use syntax highlighting??
 colorscheme solarized " Maybe find a more interesting one
-set background=light
+set background=dark
 
 " Sounds ------------------------------------------------
-set belloff=all
+set belloff=all    " Bell sounds on errors are so annoying
 
 
 " Spaces and Tabs ---------------------------------------
@@ -54,12 +54,14 @@ set foldnestmax=10    " 10 nested fold max
 nnoremap <space> za   " space opens/closes folds
 
 
-" Tabs --------------------------------------------------
+" Tabs and Buffers---------------------------------------
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 map <leader>t<leader> :tabnext 
+
+map <leader>b :tabnew /tmp/buffer<cr> " open a scratch buffer
 
 " Autoclosing  ------------------------------------------
 inoremap {<CR> {<CR>}<ESC>O
@@ -69,3 +71,8 @@ inoremap {;<CR> {<CR>};<ESC>O}}}])'"
 let g:ale_linters = {
 \   'rust': ['rustc'],
 \}
+
+" " Ultisnips  --------------------------------------------
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-f>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"

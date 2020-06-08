@@ -1,4 +1,4 @@
-cd ~/Documents/projects/dotfiles
+cd ~/dotfiles
 
 cd vim
 bash install.sh

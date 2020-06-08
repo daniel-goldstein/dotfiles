@@ -54,6 +54,10 @@ set foldnestmax=10    " 10 nested fold max
 nnoremap <space> za   " space opens/closes folds
 
 
+" Random mapping ----------------------------------------
+map <F9> :!make<CR>
+
+
 " Tabs and Buffers---------------------------------------
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
@@ -72,7 +76,6 @@ let g:ale_linters = {
 \   'rust': ['rustc'],
 \}
 
-" " Ultisnips  --------------------------------------------
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-f>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" LaTeX Live Preview ------------------------------------
+" autocmd Filetype tex setl updatetime=1
+let g:livepreview_previewer = 'open -a Preview'

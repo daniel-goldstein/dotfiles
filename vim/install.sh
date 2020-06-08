@@ -30,6 +30,8 @@ git clone https://github.com/tpope/vim-commentary
 git clone https://github.com/dense-analysis/ale.git
 # nerdtree
 git clone https://github.com/preservim/nerdtree.git
+# vim-tex
+git clone https://github.com/lervag/vimtex.git
 cd -
 
 # Vimrc ----------------------------------------------------------------------

@@ -1,4 +1,4 @@
-" Finally figuring out my own vim confuration woohoo
+" Finally figuring out my own vim confuration
 
 " Plugins -----------------------------------------------
 execute pathogen#infect()
@@ -11,7 +11,7 @@ set backspace=indent,eol,start
 
 " Colors ------------------------------------------------
 syntax enable         " How does one not use syntax highlighting??
-colorscheme solarized " Maybe find a more interesting one
+colorscheme gruvbox " Maybe find a more interesting one
 set background=dark
 
 " Sounds ------------------------------------------------
@@ -63,7 +63,8 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>t<leader> :tabnext
+map <leader><leader> :tabnext<cr>
 
 map <leader>b :tabnew /tmp/buffer<cr> " open a scratch buffer
 
@@ -78,4 +79,6 @@ let g:ale_linters = {
 
 " LaTeX Live Preview ------------------------------------
 " autocmd Filetype tex setl updatetime=1
-let g:livepreview_previewer = 'open -a Preview'
+let g:livepreview_previewer = 'open -a Skim'
+
+set t_ut=

@@ -19,7 +19,9 @@ git clone --depth=1 https://github.com/rust-lang/rust.vim.git
 
 # Plugins
 # Solarized theme
-git clone git://github.com/altercation/vim-colors-solarized.git
+# git clone git://github.com/altercation/vim-colors-solarized.git
+# Gruvbox
+git clone https://github.com/morhetz/gruvbox.git
 # fuGITive
 git clone https://github.com/tpope/vim-fugitive
 # supertab

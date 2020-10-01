@@ -11,7 +11,7 @@ set backspace=indent,eol,start
 
 " Colors ------------------------------------------------
 syntax enable         " How does one not use syntax highlighting??
-colorscheme gruvbox " Maybe find a more interesting one
+colorscheme gruvbox   " Maybe find a more interesting one
 set background=dark
 
 " Sounds ------------------------------------------------
@@ -23,6 +23,7 @@ set tabstop=4      " spaces shown for <TAB>
 set softtabstop=4  " render this many spaces when inserting <TAB>
 set shiftwidth=4   " insert that many spaces when entering onto new indent
 set expandtab      " insert spaces instead of <TAB>s
+set textwidth=80
 
 
 " UI Config ---------------------------------------------
@@ -59,11 +60,11 @@ map <F9> :!make<CR>
 
 
 " Tabs and Buffers---------------------------------------
-map <leader>tn :tabnew<cr>
+map <leader>tn :tabnew 
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext
+map <leader>t<leader> :tabnext<cr>
 map <leader><leader> :tabnext<cr>
 
 map <leader>b :tabnew /tmp/buffer<cr> " open a scratch buffer

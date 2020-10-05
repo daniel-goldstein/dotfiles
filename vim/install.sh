@@ -28,6 +28,8 @@ git clone https://github.com/ervandew/supertab
 git clone https://github.com/tpope/vim-commentary
 # ale (linting)
 git clone https://github.com/dense-analysis/ale.git
+# vim-polyglot
+git clone https://github.com/sheerun/vim-polyglot.git
 # nerdtree
 git clone https://github.com/preservim/nerdtree.git
 # vim-tex

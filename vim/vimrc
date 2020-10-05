@@ -64,10 +64,13 @@ map <leader>tn :tabnew
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext<cr>
+map <leader>t<leader> :tabnext 
 map <leader><leader> :tabnext<cr>
 
 map <leader>b :tabnew /tmp/buffer<cr> " open a scratch buffer
+
+" Make --------------------------------------------------
+map <leader>m :make<cr>
 
 " Autoclosing  ------------------------------------------
 inoremap {<CR> {<CR>}<ESC>O
@@ -75,11 +78,30 @@ inoremap {;<CR> {<CR>};<ESC>O}}}])'"
 
 " ALE Linters  ------------------------------------------
 let g:ale_linters = {
-\   'rust': ['rustc'],
+\   'javascript': ['eslint'],
 \}
 
+let g:ale_fixers = {
+\   'rust': ['rustfmt'],
+\   'javascript': ['eslint'],
+\}
+
+nmap <leader>f :ALEFix<cr>
+
+" LaTeX
+" let g:vimtex_fold_enabled = 0
+" let g:vimtex_fold_sections = [
+"       \ "part", "chapter", "section",
+"       \ "subsection", "subsubsection",
+"       \ "paragraph", "subparagraph",
+"       \ ]
+" let g:vimtex_fold_comments = 1
+" autocmd FileType tex setlocal foldmethod=expr foldexpr=vimtex#fold#level(v:lnum)
+
+" Not sure if this works..
 " LaTeX Live Preview ------------------------------------
 " autocmd Filetype tex setl updatetime=1
 let g:livepreview_previewer = 'open -a Skim'
+let g:tex_flavor="latex"
 
 set t_ut=

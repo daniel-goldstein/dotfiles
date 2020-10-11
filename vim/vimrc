@@ -11,7 +11,7 @@ set backspace=indent,eol,start
 
 " Colors ------------------------------------------------
 syntax enable         " How does one not use syntax highlighting??
-colorscheme gruvbox   " Maybe find a more interesting one
+colorscheme gruvbox   
 set background=dark
 
 " Sounds ------------------------------------------------
@@ -24,6 +24,11 @@ set softtabstop=4  " render this many spaces when inserting <TAB>
 set shiftwidth=4   " insert that many spaces when entering onto new indent
 set expandtab      " insert spaces instead of <TAB>s
 set textwidth=80
+
+autocmd FileType javascript setlocal
+            \ tabstop=2
+            \ softtabstop=2
+            \ shiftwidth=2
 
 
 " UI Config ---------------------------------------------
@@ -78,10 +83,12 @@ inoremap {;<CR> {<CR>};<ESC>O}}}])'"
 
 " ALE Linters  ------------------------------------------
 let g:ale_linters = {
+\   'python': ['flake8'],
 \   'javascript': ['eslint'],
 \}
 
 let g:ale_fixers = {
+\   'python': ['black'],
 \   'rust': ['rustfmt'],
 \   'javascript': ['eslint'],
 \}
@@ -105,3 +112,5 @@ let g:livepreview_previewer = 'open -a Skim'
 let g:tex_flavor="latex"
 
 set t_ut=
+
+let g:indentLine_color_term = 239

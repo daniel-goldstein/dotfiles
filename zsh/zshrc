@@ -7,6 +7,8 @@ alias ll="ls -al"
 alias v="vim"
 alias szh="source ~/.zshrc"
 alias vzh="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+alias links="vim useful-misc/links.txt"
 
 # git
 alias g="git"

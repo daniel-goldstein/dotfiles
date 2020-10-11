@@ -34,6 +34,10 @@ git clone https://github.com/sheerun/vim-polyglot.git
 git clone https://github.com/preservim/nerdtree.git
 # vim-tex
 git clone https://github.com/lervag/vimtex.git
+# indentLine
+git clone https://github.com/Yggdroot/indentLine.git
+# surround
+git clone https://github.com/tpope/vim-surround.git
 cd -
 
 # Vimrc ----------------------------------------------------------------------

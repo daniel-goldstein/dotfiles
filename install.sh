@@ -1,13 +1,13 @@
 cd ~/dotfiles
 
 cd vim
-bash install.sh
+sh install.sh
 cd ..
 
 cd zsh
-bash install.sh
+sh install.sh
 cd ..
 
 cd tmux
-bash install.sh
+sh install.sh
 cd ..

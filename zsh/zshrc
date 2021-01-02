@@ -23,19 +23,12 @@ alias tk="tmux kill-session -t"
 alias tl="tmux ls"
 
 # ssh
-alias cssh="ssh -X danielgoldstein@login.ccs.neu.edu"
-alias bdissh="ssh fep634@rescomp1.well.ox.ac.uk"
 alias pissh="ssh pi@raspberrypi.local"
 
 # Directories
 alias projects="cd ~/Documents/Projects"
 alias ts="cd ~/Documents/college/junior-year/oxford/work/code/tskit && source tskenv/bin/activate"
 alias ms="cd ~/Documents/college/junior-year/oxford/work/code/msprime && source mspenv/bin/activate"
-alias senior="cd ~/Documents/college/senior-year"
-alias crypto="senior && cd crypto"
-alias algebra="senior && cd algebra"
-alias graphics="senior && cd graphics"
-alias pop="senior && cd pop-culture"
 
 export TERM=xterm-256color
 

@@ -1,7 +1,33 @@
 " Finally figuring out my own vim confuration
 
 " Plugins -----------------------------------------------
-execute pathogen#infect()
+call plug#begin()
+" racket
+Plug 'wlangstroth/vim-racket'
+" Gruvbox
+Plug 'morhetz/gruvbox'
+" fuGITive
+Plug 'tpope/vim-fugitive'
+" supertab
+Plug 'ervandew/supertab'
+" commentary
+Plug 'tpope/vim-commentary'
+" ale (linting)
+Plug 'dense-analysis/ale'
+" vim-polyglot
+Plug 'sheerun/vim-polyglot'
+" nerdtree
+Plug 'preservim/nerdtree'
+" vim-tex
+Plug 'lervag/vimtex'
+" indentLine
+Plug 'Yggdroot/indentLine'
+" surround
+Plug 'tpope/vim-surround'
+" CoC
+Plug 'neoclide/coc.nvim'
+
+call plug#end()
 
 " Leader
 let mapleader=","

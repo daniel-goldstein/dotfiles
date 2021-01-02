@@ -38,6 +38,8 @@ git clone https://github.com/lervag/vimtex.git
 git clone https://github.com/Yggdroot/indentLine.git
 # surround
 git clone https://github.com/tpope/vim-surround.git
+# CoC
+git clone https://github.com/neoclide/coc.nvim.git
 cd -
 
 # Vimrc ----------------------------------------------------------------------

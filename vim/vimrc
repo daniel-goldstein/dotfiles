@@ -85,34 +85,38 @@ inoremap {;<CR> {<CR>};<ESC>O}}}])'"
 let g:ale_linters = {
 \   'python': ['flake8'],
 \   'javascript': ['eslint'],
+\   'rust': ['rls'],
 \}
 
 let g:ale_fixers = {
 \   'python': ['black'],
-\   'rust': ['rustfmt'],
 \   'javascript': ['eslint'],
+\   'rust': ['rustfmt'],
 \}
 
 nmap <leader>f :ALEFix<cr>
 
 au BufNewFile,BufRead *.ejs set filetype=html
 
-" LaTeX
-" let g:vimtex_fold_enabled = 0
-" let g:vimtex_fold_sections = [
-"       \ "part", "chapter", "section",
-"       \ "subsection", "subsubsection",
-"       \ "paragraph", "subparagraph",
-"       \ ]
-" let g:vimtex_fold_comments = 1
-" autocmd FileType tex setlocal foldmethod=expr foldexpr=vimtex#fold#level(v:lnum)
-
-" Not sure if this works..
-" LaTeX Live Preview ------------------------------------
-" autocmd Filetype tex setl updatetime=1
-let g:livepreview_previewer = 'open -a Skim'
+" Latex
 let g:tex_flavor="latex"
+let g:vimtex_view_method='skim'
+
+let g:ale_python_black_options = '--line-length 80'
 
 set t_ut=
 
 let g:indentLine_color_term = 239
+
+function! s:GoToDefinition()
+  if CocAction('jumpDefinition', 'tabe')
+    return v:true
+  endif
+
+  let ret = execute("silent! normal \<C-]>")
+  if ret =~ "Error" || ret =~ "错误"
+    call searchdecl(expand('<cword>'))
+  endif
+endfunction
+
+nmap <silent> gd :call <SID>GoToDefinition()<CR>

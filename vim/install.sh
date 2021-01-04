@@ -10,3 +10,4 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # vimrc
 ln -sf $(pwd)/vimrc ~/.vimrc
+ln -sf $(pwd)/coc-settings.json ~/.vim/coc-settings.json

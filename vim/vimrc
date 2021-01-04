@@ -8,10 +8,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
-Plug 'preservim/nerdtree'
 Plug 'lervag/vimtex'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
+Plug 'vim-test/vim-test'
+Plug 'airblade/vim-gitgutter'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
 call plug#end()
 
@@ -100,6 +104,7 @@ inoremap {;<CR> {<CR>};<ESC>O}}}])'"
 
 " ALE  --------------------------------------------------
 let g:ale_linters = {
+\   'cpp': ['ccls'],
 \   'python': ['flake8'],
 \   'javascript': ['eslint'],
 \   'rust': ['rls'],
@@ -126,12 +131,20 @@ set t_ut=
 
 let g:indentLine_color_term = 239
 
+" Test --------------------------------------------------
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
 " CoC ---------------------------------------------------
 
 let g:coc_global_extensions = [
 \ 'coc-sh',
 \ 'coc-html',
 \ 'coc-json',
+\ 'coc-metals',
 \ 'coc-pyright',
 \ 'coc-rust-analyzer',
 \ 'coc-tsserver',

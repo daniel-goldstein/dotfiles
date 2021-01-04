@@ -2,31 +2,17 @@
 
 " Plugins -----------------------------------------------
 call plug#begin()
-" racket
 Plug 'wlangstroth/vim-racket'
-" Gruvbox
 Plug 'morhetz/gruvbox'
-" fuGITive
 Plug 'tpope/vim-fugitive'
-" supertab
-Plug 'ervandew/supertab'
-" commentary
 Plug 'tpope/vim-commentary'
-" ale (linting)
 Plug 'dense-analysis/ale'
-" vim-polyglot
 Plug 'sheerun/vim-polyglot'
-" nerdtree
 Plug 'preservim/nerdtree'
-" vim-tex
 Plug 'lervag/vimtex'
-" indentLine
 Plug 'Yggdroot/indentLine'
-" surround
 Plug 'tpope/vim-surround'
-" CoC
-Plug 'neoclide/coc.nvim'
-
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
 call plug#end()
 
 " Leader
@@ -38,10 +24,14 @@ set backspace=indent,eol,start
 " Colors ------------------------------------------------
 syntax enable         " How does one not use syntax highlighting??
 colorscheme gruvbox   
-set background=dark
+if $ITERM_PROFILE == 'gruvbox-dark'
+    set background=dark
+else
+    set background=light
+endif
 
 " Sounds ------------------------------------------------
-set belloff=all    " Bell sounds on errors are so annoying
+set belloff=all    " Bell sounds are so annoying
 
 
 " Spaces and Tabs ---------------------------------------
@@ -86,7 +76,7 @@ set foldnestmax=10    " 10 nested fold max
 nnoremap <space> za   " space opens/closes folds
 
 
-" Random mapping ----------------------------------------
+" Random mappings ---------------------------------------
 map <F9> :!make<CR>
 
 
@@ -98,7 +88,8 @@ map <leader>tm :tabmove
 map <leader>t<leader> :tabnext 
 map <leader><leader> :tabnext<cr>
 
-map <leader>b :tabnew /tmp/buffer<cr> " open a scratch buffer
+" open a scratch buffer
+map <leader>b :tabnew /tmp/buffer<cr>
 
 " Make --------------------------------------------------
 map <leader>m :make<cr>
@@ -107,7 +98,7 @@ map <leader>m :make<cr>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O}}}])'"
 
-" ALE Linters  ------------------------------------------
+" ALE  --------------------------------------------------
 let g:ale_linters = {
 \   'python': ['flake8'],
 \   'javascript': ['eslint'],
@@ -122,9 +113,10 @@ let g:ale_fixers = {
 
 nmap <leader>f :ALEFix<cr>
 
+" Treat ejs files like html I guess
 au BufNewFile,BufRead *.ejs set filetype=html
 
-" Latex
+" Latex  ------------------------------------------------
 let g:tex_flavor="latex"
 let g:vimtex_view_method='skim'
 
@@ -133,6 +125,18 @@ let g:ale_python_black_options = '--line-length 80'
 set t_ut=
 
 let g:indentLine_color_term = 239
+
+" CoC ---------------------------------------------------
+
+let g:coc_global_extensions = [
+\ 'coc-sh',
+\ 'coc-html',
+\ 'coc-json',
+\ 'coc-pyright',
+\ 'coc-rust-analyzer',
+\ 'coc-tsserver',
+\ 'coc-vimtex',
+\ ]
 
 function! s:GoToDefinition()
   if CocAction('jumpDefinition', 'tabe')
@@ -146,3 +150,14 @@ function! s:GoToDefinition()
 endfunction
 
 nmap <silent> gd :call <SID>GoToDefinition()<CR>
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()

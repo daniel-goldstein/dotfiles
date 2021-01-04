@@ -32,6 +32,10 @@ alias ms="cd ~/Documents/college/junior-year/oxford/work/code/msprime && source 
 
 export TERM=xterm-256color
 
+if [ "$ITERM_PROFILE" = 'gruvbox-light' ]; then
+    source ~/dotfiles/zsh/gruvbox-color-overload.sh
+fi
+
 if [ -x ~/.zprofile ]
 then
     source ~/.zprofile

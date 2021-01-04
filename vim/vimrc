@@ -116,7 +116,7 @@ let g:ale_fixers = {
 \   'rust': ['rustfmt'],
 \}
 
-nmap <leader>f :ALEFix<cr>
+nmap <leader>g :ALEFix<cr>
 
 " Treat ejs files like html I guess
 au BufNewFile,BufRead *.ejs set filetype=html
@@ -174,3 +174,7 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+
+" FZF ---------------------------------------------------
+nmap <silent> <C-f> :Files<CR>
+nmap <silent> <Leader>f :Files<CR>

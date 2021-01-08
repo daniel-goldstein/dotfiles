@@ -4,9 +4,10 @@
 alias dotinstall="bash ~/dotfiles/install.sh"
 
 alias ll="ls -al"
-alias v="vim"
-alias vimrc="vim ~/.vimrc"
-alias links="vim useful-misc/links.txt"
+alias v="nvim"
+alias vimrc="nvim ~/.vimrc"
+alias links="nvim useful-misc/links.txt"
+alias installccls="ln -sf ~/dotfiles/linters/mac-default-ccls .ccls"
 
 # git
 alias g="git"
@@ -25,13 +26,13 @@ alias pissh="ssh pi@raspberrypi.local"
 
 # Directories
 alias projects="cd ~/Documents/Projects"
-alias ts="cd ~/Documents/college/junior-year/oxford/work/code/tskit && source tskenv/bin/activate"
+alias ts="cd ~/Documents/college/junior-year/oxford/work/new-code/tskit && source tsenv/bin/activate"
 alias ms="cd ~/Documents/college/junior-year/oxford/work/code/msprime && source mspenv/bin/activate"
 alias hail="cd ~/Documents/hail/hail"
 
 export TERM=xterm-256color
 
-if [ "$ITERM_PROFILE" = 'gruvbox-light' ]; then
+if [[ $ITERM_PROFILE = gruvbox-light ]]; then
     source ~/dotfiles/zsh/gruvbox-color-overload.sh
 fi
 

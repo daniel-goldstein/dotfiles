@@ -43,7 +43,7 @@ set tabstop=4      " spaces shown for <TAB>
 set softtabstop=4  " render this many spaces when inserting <TAB>
 set shiftwidth=4   " insert that many spaces when entering onto new indent
 set expandtab      " insert spaces instead of <TAB>s
-set textwidth=80
+" set textwidth=80
 
 autocmd FileType javascript setlocal
             \ tabstop=2
@@ -114,9 +114,14 @@ let g:ale_fixers = {
 \   'python': ['black'],
 \   'javascript': ['eslint'],
 \   'rust': ['rustfmt'],
+\   'c': ['clang-format'],
+\   'cpp': ['clang-format'],
 \}
 
 nmap <leader>g :ALEFix<cr>
+
+" C headers
+let g:ale_c_clang_options="-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
 
 " Treat ejs files like html I guess
 au BufNewFile,BufRead *.ejs set filetype=html
@@ -124,12 +129,17 @@ au BufNewFile,BufRead *.ejs set filetype=html
 " Latex  ------------------------------------------------
 let g:tex_flavor="latex"
 let g:vimtex_view_method='skim'
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+let g:indentLine_fileTypeExclude = ['tex']
+let g:indentLine_color_term = 239
+
+" random
 
 let g:ale_python_black_options = '--line-length 80'
 
 set t_ut=
-
-let g:indentLine_color_term = 239
 
 " Test --------------------------------------------------
 nmap <silent> t<C-n> :TestNearest<CR>
@@ -176,5 +186,5 @@ inoremap <silent><expr> <Tab>
       \ coc#refresh()
 
 " FZF ---------------------------------------------------
-nmap <silent> <C-f> :Files<CR>
+nmap <silent> <C-f> :Rg<CR>
 nmap <silent> <Leader>f :Files<CR>

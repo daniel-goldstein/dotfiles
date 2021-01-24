@@ -5,9 +5,11 @@ alias dotinstall="bash ~/dotfiles/install.sh"
 
 alias ll="ls -al"
 alias v="nvim"
+alias k="kubectl"
+alias myk="kubectl -n dgoldste"
 alias vimrc="nvim ~/.vimrc"
-alias links="nvim useful-misc/links.txt"
-alias installccls="ln -sf ~/dotfiles/linters/mac-default-ccls .ccls"
+alias links="nvim ~/useful-misc/links.txt"
+alias addccls="cp ~/dotfiles/linters/mac-default-ccls .ccls"
 
 # git
 alias g="git"
@@ -28,7 +30,8 @@ alias pissh="ssh pi@raspberrypi.local"
 alias projects="cd ~/Documents/Projects"
 alias ts="cd ~/Documents/college/junior-year/oxford/work/new-code/tskit && source tsenv/bin/activate"
 alias ms="cd ~/Documents/college/junior-year/oxford/work/code/msprime && source mspenv/bin/activate"
-alias hail="cd ~/Documents/hail/hail"
+alias hail="cd ~/Documents/broad/hail"
+alias fed="cd ~/Documents/projects/nitsan-stuff/FED3"
 
 export TERM=xterm-256color
 
@@ -40,3 +43,29 @@ if [ -x ~/.zprofile ]
 then
     source ~/.zprofile
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/danielgoldstein/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/danielgoldstein/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/danielgoldstein/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/danielgoldstein/google-cloud-sdk/completion.zsh.inc'; fi
+
+kjlogs() {
+    dir=$(mktemp -d)
+    mkdir -p $dir
+    namespace="${1}"
+    shift
+    for app in $*
+    do
+        for x in $(k get pods -l app="${app}" -n "${namespace}" | tail -n +2 | awk '{print $1}')
+        do
+            k logs --tail=999999999999999 $x -n "${namespace}" \
+                | grep -Ev 'healthcheck|metrics' \
+                | grep '^{' \
+                | jq -c '{asctime, x_real_ip, connection_id, exc_info, message, container: "'$x'"}' \
+                     > $dir/$x &
+        done
+    done
+    wait
+    cat $dir/* | sort | jq -c '{asctime, container, x_real_ip, connection_id, exc_info, message}'
+}

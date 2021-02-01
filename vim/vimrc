@@ -2,6 +2,7 @@
 
 " Plugins -----------------------------------------------
 call plug#begin()
+Plug 'vim-airline/vim-airline'
 Plug 'wlangstroth/vim-racket'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
@@ -69,6 +70,7 @@ set so=7           " set lines buffer from the top/botom of the screen
 " Search ------------------------------------------------
 set incsearch      " search as characters are entered
 set hlsearch       " highlight matches
+set ignorecase     " case insensitive
 nnoremap <leader><space> :nohlsearch<CR> " unhighlight
 
 
@@ -139,7 +141,7 @@ let g:indentLine_color_term = 239
 
 " Annoying that the python projects I'm a part of use
 " mixes of flake8 / pylint / black
-let g:ale_python_black_options = '--line-length 80'
+let g:ale_python_black_options = '--line-length 120'
 let g:ale_python_pylint_change_directory=0
 
 set t_ut=
@@ -162,6 +164,7 @@ let g:coc_global_extensions = [
 \ 'coc-rust-analyzer',
 \ 'coc-tsserver',
 \ 'coc-vimtex',
+\ 'coc-python',
 \ ]
 
 function! s:GoToDefinition()

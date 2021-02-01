@@ -44,11 +44,15 @@ then
     source ~/.zprofile
 fi
 
+export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{hailenv/*,.mypy_cache/*,.git/*, */**/__pycache__/*}"'
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/danielgoldstein/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/danielgoldstein/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/danielgoldstein/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/danielgoldstein/google-cloud-sdk/completion.zsh.inc'; fi
+
+export DOCKER_BUILDKIT=1
 
 kjlogs() {
     dir=$(mktemp -d)

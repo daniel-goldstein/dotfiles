@@ -11,3 +11,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # vimrc
 ln -sf $(pwd)/vimrc ~/.vimrc
 ln -sf $(pwd)/coc-settings.json ~/.vim/coc-settings.json
+
+# for neovim
+mkdir -p ~/.config/nvim
+cat <<EOF > ~/.config/nvim/init.vim
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath=&runtimepath
+source ~/.vimrc
+EOF

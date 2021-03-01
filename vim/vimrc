@@ -13,8 +13,7 @@ Plug 'lervag/vimtex'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 Plug 'vim-test/vim-test'
-Plug 'airblade/vim-gitgutter'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
@@ -29,10 +28,10 @@ set backspace=indent,eol,start
 " Colors ------------------------------------------------
 syntax enable         " How does one not use syntax highlighting??
 colorscheme gruvbox   
-if $ITERM_PROFILE == 'gruvbox-dark'
-    set background=dark
-else
+if $ITERM_PROFILE == 'gruvbox-light'
     set background=light
+else
+    set background=dark
 endif
 
 " Sounds ------------------------------------------------
@@ -46,11 +45,9 @@ set shiftwidth=4   " insert that many spaces when entering onto new indent
 set expandtab      " insert spaces instead of <TAB>s
 " set textwidth=80
 
-autocmd FileType javascript setlocal
-            \ tabstop=2
-            \ softtabstop=2
-            \ shiftwidth=2
-
+autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType htmldjango setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 " UI Config ---------------------------------------------
 set number         " display line numbers
@@ -110,6 +107,7 @@ let g:ale_linters = {
 \   'python': ['flake8', 'pylint', 'mypy'],
 \   'javascript': ['eslint'],
 \   'rust': ['rls'],
+\   'htmldjango': ['curlylint'],
 \}
 
 let g:ale_fixers = {
@@ -118,6 +116,7 @@ let g:ale_fixers = {
 \   'go': ['gofmt'],
 \   'c': ['clang-format'],
 \   'cpp': ['clang-format'],
+\   'htmldjango': ['curlylint'],
 \}
 
 nmap <leader>g :ALEFix<cr>
@@ -165,6 +164,8 @@ let g:coc_global_extensions = [
 \ 'coc-tsserver',
 \ 'coc-vimtex',
 \ 'coc-python',
+\ 'coc-svelte',
+\ 'coc-tailwindcss',
 \ ]
 
 function! s:GoToDefinition()

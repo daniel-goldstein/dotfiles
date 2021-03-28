@@ -5,4 +5,17 @@
 	helper = store
 
 [alias]
-  lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    a = add
+    bd = branch -D
+    c = commit
+    cm = commit -m
+    cam = commit -am
+    cu = reset --soft HEAD~1
+    co = checkout
+    cob = checkout -b
+    d = diff
+    rebm = rebase -i main
+    s = status
+    st = stash apply
+    sta = stash apply
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all

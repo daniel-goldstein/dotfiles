@@ -43,7 +43,7 @@ set tabstop=4      " spaces shown for <TAB>
 set softtabstop=4  " render this many spaces when inserting <TAB>
 set shiftwidth=4   " insert that many spaces when entering onto new indent
 set expandtab      " insert spaces instead of <TAB>s
-" set textwidth=80
+set textwidth=120
 
 autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
@@ -106,12 +106,14 @@ let g:ale_linters = {
 \   'cpp': ['ccls'],
 \   'python': ['flake8', 'pylint', 'mypy'],
 \   'javascript': ['eslint'],
+\   'typescriptreact': ['eslint'],
 \   'rust': ['rls'],
 \   'htmldjango': ['curlylint'],
 \}
 
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
+\   'typescriptreact': ['eslint'],
 \   'rust': ['rustfmt'],
 \   'go': ['gofmt'],
 \   'c': ['clang-format'],

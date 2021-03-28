@@ -1,13 +1,15 @@
+#!/bin/zsh
+
 cd ~/dotfiles
 
 cd vim
-sh install.sh
+./install.sh
 cd ..
 
 cd zsh
-sh install.sh
+./install.sh
 cd ..
 
 cd tmux
-sh install.sh
+./install.sh
 cd ..

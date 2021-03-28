@@ -1,22 +1,14 @@
-# Aliases ----------------------------------------------------------
+# Exports ----------------------------------------------------------
+export TERM=xterm-256color
+export DOCKER_BUILDKIT=1
 
-# install dotfiles
-alias dotinstall="bash ~/dotfiles/install.sh"
+# Aliases ----------------------------------------------------------
 
 alias ll="ls -al"
 alias v="nvim"
 alias k="kubectl"
-alias myk="kubectl -n dgoldste"
 alias vimrc="nvim ~/.vimrc"
 alias links="nvim ~/useful-misc/links.txt"
-alias addccls="cp ~/dotfiles/linters/mac-default-ccls .ccls"
-
-# git
-alias g="git"
-alias gs="git status"
-alias gb="git branch"
-alias gc="git checkout"
-alias gundo="git reset --soft HEAD~1"
 
 # tmux
 alias ta="tmux attach-session -t"
@@ -29,12 +21,17 @@ alias pissh="ssh pi@raspberrypi.local"
 # Directories
 alias projects="cd ~/Documents/Projects"
 alias ts="cd ~/Documents/college/junior-year/oxford/work/new-code/tskit && source tsenv/bin/activate"
-alias ms="cd ~/Documents/college/junior-year/oxford/work/code/msprime && source mspenv/bin/activate"
-alias hail="cd ~/hail"
 alias fed="cd ~/Documents/projects/nitsan-stuff/FED3"
 
-export TERM=xterm-256color
 
+# Broad
+alias myk="kubectl -n dgoldste"
+alias hail="cd ~/hail"
+alias bssh="ssh login.broadinstitute.org"
+export HAIL_QUERY_BACKEND='service'
+source ~/hail/devbin/functions.sh
+
+# Fix to improve colors for light gruvbox
 if [[ $ITERM_PROFILE = gruvbox-light ]]; then
     source ~/dotfiles/zsh/gruvbox-color-overload.sh
 fi
@@ -44,16 +41,13 @@ then
     source ~/.zprofile
 fi
 
+# Use ripgrep in all its glory for fzf
 export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{hailenv/*,.mypy_cache/*,.git/*, */**/__pycache__/*}"'
 
 # Load Git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
-
-export DOCKER_BUILDKIT=1
-export HAIL_QUERY_BACKEND='service'
-source ~/hail/devbin/functions.sh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/dgoldste/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dgoldste/google-cloud-sdk/path.zsh.inc'; fi

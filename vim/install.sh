@@ -1,9 +1,10 @@
+#!/bin/zsh
+
 # Remove what was there before
 echo "Removing current configuration..."
 rm -rf ~/.vim
 
-echo "Installing..."
-
+echo "Installing vim-plug..."
 # vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

@@ -13,7 +13,6 @@ Plug 'lervag/vimtex'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 Plug 'vim-test/vim-test'
-" Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
@@ -29,11 +28,16 @@ set backspace=indent,eol,start
 " Colors ------------------------------------------------
 syntax enable         " How does one not use syntax highlighting??
 colorscheme gruvbox   
-if $ITERM_PROFILE == 'gruvbox-light'
-    set bg=light
-else
-    set bg=dark
+set bg=light
+
+" Use true colors
+set t_Co=256
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
+
 
 " Sounds ------------------------------------------------
 set belloff=all    " Bell sounds are so annoying
@@ -80,10 +84,6 @@ set foldnestmax=10    " 10 nested fold max
 nnoremap <space> za   " space opens/closes folds
 
 
-" Random mappings ---------------------------------------
-map <F9> :!make<CR>
-
-
 " Tabs and Buffers---------------------------------------
 map <leader>tn :tabnew 
 map <leader>to :tabonly<cr>
@@ -97,6 +97,7 @@ map <leader>b :tabnew /tmp/buffer<cr>
 
 " Make --------------------------------------------------
 map <leader>m :make<cr>
+map <F9> :!make<CR>
 
 " Autoclosing  ------------------------------------------
 inoremap {<CR> {<CR>}<ESC>O
@@ -222,10 +223,8 @@ nmap <silent> <C-f> :Rg<CR>
 nmap <silent> <Leader>f :Files<CR>
 
 
-
 " Stuff I should organize later
 autocmd FileType json syntax match Comment +\/\/.\+$+
-
 
 " dark-notify
 " Detect mac sunset/sunrise and change bg to light/dark accordingly

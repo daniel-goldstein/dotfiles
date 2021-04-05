@@ -3,8 +3,10 @@ export TERM=xterm-256color
 export DOCKER_BUILDKIT=1
 
 # Aliases ----------------------------------------------------------
-
 alias ll="ls -al"
+alias g="git"
+alias gs="git status"
+alias gb="git branch"
 alias v="nvim"
 alias k="kubectl"
 alias vimrc="nvim ~/.vimrc"
@@ -29,6 +31,7 @@ alias myk="kubectl -n dgoldste"
 alias hail="cd ~/hail"
 alias bssh="ssh login.broadinstitute.org"
 export HAIL_QUERY_BACKEND='service'
+export LLVM_DIR=/usr/local/Cellar/llvm/11.1.0/lib/cmake
 source ~/hail/devbin/functions.sh
 
 # Fix to improve colors for light gruvbox

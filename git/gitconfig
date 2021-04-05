@@ -6,6 +6,7 @@
 
 [alias]
     a = add
+    b = branch
     bd = branch -D
     c = commit
     cm = commit -m

@@ -17,6 +17,7 @@ Plug 'vim-test/vim-test'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
+Plug 'cormacrelf/dark-notify'
 call plug#end()
 
 " Leader
@@ -29,9 +30,9 @@ set backspace=indent,eol,start
 syntax enable         " How does one not use syntax highlighting??
 colorscheme gruvbox   
 if $ITERM_PROFILE == 'gruvbox-light'
-    set background=light
+    set bg=light
 else
-    set background=dark
+    set bg=dark
 endif
 
 " Sounds ------------------------------------------------
@@ -103,7 +104,6 @@ inoremap {;<CR> {<CR>};<ESC>O}}}])'"
 
 " ALE  --------------------------------------------------
 let g:ale_linters = {
-\   'cpp': ['ccls'],
 \   'python': ['flake8', 'pylint', 'mypy'],
 \   'javascript': ['eslint'],
 \   'typescriptreact': ['eslint'],
@@ -129,7 +129,7 @@ let g:ale_c_clang_options="-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
 " Treat ejs files like html I guess
 au BufNewFile,BufRead *.ejs set filetype=html
 
-" Latex  ------------------------------------------------
+" IndentLine  ------------------------------------------------
 let g:tex_flavor="latex"
 let g:vimtex_view_method='skim'
 set concealcursor=""
@@ -138,7 +138,7 @@ let g:tex_conceal='abdmg'
 autocmd FileType markdown let g:indentLine_conceallevel=0 " What is this the Slack WYSIWYG
 
 let g:indentLine_fileTypeExclude = ['tex', 'md']
-let g:indentLine_color_term = 239
+let g:indentLine_color_term = 100
 
 " Annoying that the python projects I'm a part of use
 " mixes of flake8 / pylint / black
@@ -156,18 +156,20 @@ nmap <silent> t<C-g> :TestVisit<CR>
 
 " CoC ---------------------------------------------------
 
+" Can run :CocCommand clangd.install if you don't have clangd
 let g:coc_global_extensions = [
-\ 'coc-sh',
+\ 'coc-clangd',
+\ 'coc-go',
 \ 'coc-html',
 \ 'coc-json',
-\ 'coc-go',
 \ 'coc-metals',
-\ 'coc-rust-analyzer',
-\ 'coc-tsserver',
-\ 'coc-vimtex',
 \ 'coc-python',
+\ 'coc-rust-analyzer',
+\ 'coc-sh',
 \ 'coc-svelte',
 \ 'coc-tailwindcss',
+\ 'coc-tsserver',
+\ 'coc-vimtex',
 \ ]
 
 function! s:GoToDefinition()
@@ -181,7 +183,28 @@ function! s:GoToDefinition()
   endif
 endfunction
 
+" So that opening definition opens in separate tab
 nmap <silent> gd :call <SID>GoToDefinition()<CR>
+
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -197,3 +220,15 @@ inoremap <silent><expr> <Tab>
 " FZF ---------------------------------------------------
 nmap <silent> <C-f> :Rg<CR>
 nmap <silent> <Leader>f :Files<CR>
+
+
+
+" Stuff I should organize later
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+
+" dark-notify
+" Detect mac sunset/sunrise and change bg to light/dark accordingly
+:lua <<EOF
+require('dark_notify').run()
+EOF

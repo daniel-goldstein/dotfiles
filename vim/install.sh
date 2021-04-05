@@ -12,6 +12,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # vimrc
 ln -sf $(pwd)/vimrc ~/.vimrc
 ln -sf $(pwd)/coc-settings.json ~/.vim/coc-settings.json
+ln -sf $(pwd)/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # for neovim
 mkdir -p ~/.config/nvim
